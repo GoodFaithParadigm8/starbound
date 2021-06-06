@@ -1,7 +1,8 @@
+// SPDX-License-Identifier: GPL-3.0
 // Solidity program to   
 // demonstrate how to  
 // write a smart contract   
-pragma solidity >= 0.4.16 < 0.7.0; 
+pragma solidity >= 0.6.0 < 0.8.5;
 
 contract Migrations {
   address public owner;
@@ -11,7 +12,7 @@ contract Migrations {
     if (msg.sender == owner) _;
   }
 
-  constructor() public {
+  constructor() {
     owner = msg.sender;
   }
 

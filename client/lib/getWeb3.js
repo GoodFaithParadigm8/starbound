@@ -3,7 +3,7 @@ import Web3 from 'web3'
 const resolveWeb3 = (resolve) => {
   let { web3 } = window
   const alreadyInjected = typeof web3 !== 'undefined' // i.e. Mist/Metamask
-  const localProvider = `http://localhost:9545`
+  const localProvider = `https://rinkeby.infura.io/v3/bb752391fc7048b49b63ab9da878e9d1`
 
  
 
