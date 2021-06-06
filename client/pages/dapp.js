@@ -4,8 +4,9 @@ import Web3Container from '../lib/Web3Container'
 
 class Dapp extends React.Component {
   state = {
-    accounts: undefined,
-    owner: undefined
+    accounts: null,
+    owner: null,
+    contract: null
     // balance: undefined,
     // ethBalance: undefined
   };
@@ -29,16 +30,18 @@ class Dapp extends React.Component {
   // };
 
   claimStar = async () => {
-    const { accounts, contract  } = this.props
-    const StarOwner = await contract.methods.get().call({ from: accounts[0] })
-    this.setState({ owner: StarOwner});
+    const { accounts, contract } = this.props
+    await contract.methods.claimStar().call({ from: accounts[0] })
+    let starOwner = await contract.methods.starOwner.call();
+    this.setState({ owner: starOwner});
+    console.log(starOwner);
   }
 
  
 
   render () {
-    const { owner , accounts } = this.state
-    console.log({owner, accounts});
+    const { claimStar, starOwner } = this.state
+    console.log({claimStar, starOwner })
     return (
       <div>
         <h1>My Dapp</h1>
@@ -46,7 +49,7 @@ class Dapp extends React.Component {
         <button onClick={this.claimStar}>Claim  Star</button>
         {/* <button onClick={this.getValue}>Get account balance</button> */}
         {/* <button onClick={this.getEthBalance}>Get ether balance</button> */}
-        <div>Star Name: {owner.starName}</div>
+        <div>Star Name: {this.starName}</div>
         {/* <div>Ether Balance: {ethBalance}</div> */}
         <div>
           <Link href='/accounts'>

@@ -3,12 +3,12 @@ const getContractInstance = async (web3, contractDefinition) => {
   const networkId = await web3.eth.net.getId()
   const deployedAddress = contractDefinition.networks[networkId].address
 
-  // create the instance
-  const instance = new web3.eth.Contract(
+  // create the contract instance
+  const contract = new web3.eth.Contract(
     contractDefinition.abi,
     deployedAddress
   )
-  return instance
+  return contract
 }
 
 export default getContractInstance

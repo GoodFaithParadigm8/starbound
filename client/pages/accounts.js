@@ -12,7 +12,6 @@ const Accounts = ({ accounts }) => (
   </div>
 )
 
-console.log(Accounts)
 
 export default () => (
   <Web3Container

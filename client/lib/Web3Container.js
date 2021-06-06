@@ -6,7 +6,7 @@ import contractDefinition from '../../build/contracts/StarNotary.json'
 export default class Web3Container extends React.Component {
   state = { web3: null, accounts: null, contract: null };
 
-  async componentDidMount () {
+  async componentDidMount() {
     try {
       const web3 = await getWeb3()
       const accounts = await web3.eth.getAccounts()
