@@ -15,7 +15,7 @@ class Dapp extends React.Component {
   //   await contract.methods.set(5).send({ from: accounts[0] })
   //   alert('Stored 5 into account')
   // };
-cd client
+
   // getValue = async () => {
   //   const { accounts, contract } = this.props
   //   const response = await contract.methods.get().call({ from: accounts[0] })

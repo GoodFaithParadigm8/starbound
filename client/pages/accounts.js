@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Web3Container from '../lib/Web3Container'
 
 const Accounts = ({ accounts }) => (
+  
   <div>
     <h1>My Accounts</h1>
     <pre>{JSON.stringify(accounts, null, 4)}</pre>
@@ -10,6 +11,8 @@ const Accounts = ({ accounts }) => (
     <div><Link href='/'><a>Home</a></Link></div>
   </div>
 )
+
+console.log(Accounts)
 
 export default () => (
   <Web3Container
