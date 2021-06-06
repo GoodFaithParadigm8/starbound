@@ -8,6 +8,9 @@ Install gananche.
 Run ganache.
 `ganache-cli`
 
+Open another terminal.
+In the second terminal:
+
 Build the contracts.
 `truffle build`
 
