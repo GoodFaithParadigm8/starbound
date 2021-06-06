@@ -4,39 +4,50 @@ import Web3Container from '../lib/Web3Container'
 
 class Dapp extends React.Component {
   state = {
-    balance: undefined,
-    ethBalance: undefined
+    accounts: undefined,
+    owner: undefined
+    // balance: undefined,
+    // ethBalance: undefined
   };
 
-  storeValue = async () => {
-    const { accounts, contract } = this.props
-    await contract.methods.set(5).send({ from: accounts[0] })
-    alert('Stored 5 into account')
-  };
+  // storeValue = async () => {
+  //   const { accounts, contract } = this.props
+  //   await contract.methods.set(5).send({ from: accounts[0] })
+  //   alert('Stored 5 into account')
+  // };
+cd client
+  // getValue = async () => {
+  //   const { accounts, contract } = this.props
+  //   const response = await contract.methods.get().call({ from: accounts[0] })
+  //   this.setState({ balance: response })
+  // };
 
-  getValue = async () => {
-    const { accounts, contract } = this.props
-    const response = await contract.methods.get().call({ from: accounts[0] })
-    this.setState({ balance: response })
-  };
+  // getEthBalance = async () => {
+  //   const { web3, accounts } = this.props
+  //   const balanceInWei = await web3.eth.getBalance(accounts[0])
+  //   this.setState({ ethBalance: balanceInWei / 1e18 })
+  // };
 
-  getEthBalance = async () => {
-    const { web3, accounts } = this.props
-    const balanceInWei = await web3.eth.getBalance(accounts[0])
-    this.setState({ ethBalance: balanceInWei / 1e18 })
-  };
+  claimStar = async () => {
+    const { accounts, contract  } = this.props
+    const StarOwner = await contract.methods.get().call({ from: accounts[0] })
+    this.setState({ owner: StarOwner});
+  }
+
+ 
 
   render () {
-    const { balance = 'N/A', ethBalance = 'N/A' } = this.state
+    const { owner , accounts } = this.state
+    console.log({owner, accounts});
     return (
       <div>
         <h1>My Dapp</h1>
 
-        <button onClick={this.storeValue}>Store 5 into account balance</button>
-        <button onClick={this.getValue}>Get account balance</button>
-        <button onClick={this.getEthBalance}>Get ether balance</button>
-        <div>Account Balance: {balance}</div>
-        <div>Ether Balance: {ethBalance}</div>
+        <button onClick={this.claimStar}>Claim  Star</button>
+        {/* <button onClick={this.getValue}>Get account balance</button> */}
+        {/* <button onClick={this.getEthBalance}>Get ether balance</button> */}
+        <div>Star Name: {owner.starName}</div>
+        {/* <div>Ether Balance: {ethBalance}</div> */}
         <div>
           <Link href='/accounts'>
             <a>My Accounts</a>
